@@ -1,7 +1,25 @@
-# Plugin Features
+# Features: Mewshtari Email in Order for WooCommerce
 
-- **WooCommerce Integration**: Works directly with WooCommerce order screens (HPOS compatible).
-- **WYSIWYG Editor**: Custom WYSIWYG note box to draft and format emails before sending.
-- **Selectable Templates**: Up to 5 customizable templates stored in settings with placeholders support (`[name]`, `[product_title]`, `[product_link]`, `[order_date]`).
-- **Template 5 Cancellation**: Template 5 cancels the order and sends a cancellation email automatically.
-- **Reply-To & From Matching**: Pulls configured WooCommerce email settings so Reply-To headers align with sending addresses.
+## Custom Status-Mapped Templates
+- Define unlimited email templates.
+- Support for custom email subject lines per template, supporting dynamic placeholder replacements.
+- Map each template to any native WooCommerce order status (Pending, Processing, Completed, Cancelled, etc.).
+- Store raw/rich HTML structures inside templates.
+
+## Admin Settings Panel
+- Integrated under WooCommerce settings submenu.
+- Interactive, responsive Vanilla JS template repeater (drag/reorder, add, delete instantly).
+- Responsive layouts with premium aesthetics (card layouts, custom CSS, shadows, modern badges).
+- Informational guide on template shortcodes (`[name]`, `[product_title]`, `[product_link]`, `[order_date]`).
+
+## Order Editing Metabox
+- "Mewshtari Email in Order" metabox shown on WooCommerce order edit page.
+- Native compatibility with HPOS (High-Performance Order Storage) and post-based orders.
+- Template select dropdown dynamically loads raw template HTML, replaces shortcodes with live order data, and updates `wp_editor` body instantly.
+- Primary AJAX trigger "Send to customer now" with visual loading feedback.
+
+## Automation & Processing
+- Send secure email transmissions via WooCommerce core mailer.
+- Automatic status update to mapped status upon successful AJAX dispatch.
+- Record internal order notes detailing the transmission.
+- Seamless prepending of the custom HTML content directly into WooCommerce transactional emails using standard action hooks.

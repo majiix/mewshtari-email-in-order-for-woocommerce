@@ -1,13 +1,12 @@
 <?php
 /**
- * Uninstall file for Mewshtari Email in Order for WooCommerce
- *
- * @package Mewshtari\EmailInOrder
+ * Uninstall File.
+ * Cleans up options database entries on plugin deletion.
  */
 
-if (!defined('WP_UNINSTALL_PLUGIN')) {
-	exit;
+// If uninstall not called from WordPress, exit.
+if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
+    exit;
 }
 
-// Delete plugin options from database.
-delete_option('meiofw_templates');
+delete_option( 'mewshtari_email_templates' );

@@ -1,0 +1,255 @@
+.mewshtari-settings-wrap {
+    max-width: 1100px;
+    margin: 20px auto;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+.mewshtari-header {
+    background: #ffffff;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
+    margin-bottom: 24px;
+}
+.mewshtari-header h1 {
+    margin: 0 0 8px 0;
+    color: #1e293b;
+    font-size: 26px;
+    font-weight: 700;
+}
+.mewshtari-header p {
+    margin: 0;
+    color: #64748b;
+    font-size: 14px;
+}
+.mewshtari-settings-layout {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 24px;
+    align-items: start;
+}
+@media (max-width: 768px) {
+    .mewshtari-settings-layout {
+        grid-template-columns: 1fr;
+    }
+}
+.mewshtari-main-content {
+    display: flex;
+    flex-direction: column;
+}
+.mewshtari-sidebar {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.mewshtari-alert-box {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-left: 4px solid #16a34a;
+    padding: 20px;
+    border-radius: 12px;
+    color: #334155;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
+}
+.mewshtari-alert-box h3 {
+    margin: 0 0 12px 0;
+    color: #1e293b;
+    font-size: 15px;
+    font-weight: 600;
+    border-bottom: 1px solid #f1f5f9;
+    padding-bottom: 8px;
+}
+.mewshtari-alert-box p {
+    margin: 0 0 12px 0;
+    font-size: 13px;
+    color: #64748b;
+    line-height: 1.5;
+}
+.mewshtari-alert-box ul {
+    margin: 0;
+    padding-left: 0;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.mewshtari-alert-box li {
+    font-size: 13px;
+    color: #475569;
+    line-height: 1.5;
+}
+.mewshtari-alert-box li strong {
+    color: #2563eb;
+    background: #eff6ff;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 12px;
+    display: inline-block;
+    margin-bottom: 4px;
+}
+.mewshtari-templates-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 24px;
+}
+.mewshtari-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
+    border: 1px solid #e2e8f0;
+    position: relative;
+    transition: border-color 0.22s ease-in-out, box-shadow 0.22s ease-in-out, transform 0.22s ease-in-out;
+}
+.mewshtari-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 20px -3px rgba(0,0,0,0.08), 0 4px 6px -2px rgba(0,0,0,0.04);
+    border-color: #cbd5e1;
+}
+.mewshtari-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 16px;
+}
+.mewshtari-field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.mewshtari-field-group label {
+    font-weight: 600;
+    color: #475569;
+    font-size: 13px;
+}
+.mewshtari-field-group input,
+.mewshtari-field-group select,
+.mewshtari-field-group textarea {
+    padding: 10px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 14px;
+    background-color: #f8fafc;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    width: 100%;
+    box-sizing: border-box;
+}
+.mewshtari-field-group input:focus,
+.mewshtari-field-group select:focus,
+.mewshtari-field-group textarea:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+    background-color: #ffffff;
+    outline: none;
+}
+.mewshtari-card-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 16px;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 16px;
+}
+.mewshtari-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.1s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+    border: none;
+    height: 38px;
+    box-sizing: border-box;
+}
+.mewshtari-btn:active {
+    transform: scale(0.97);
+}
+.mewshtari-btn-primary {
+    background-color: #3b82f6;
+    color: #ffffff;
+}
+.mewshtari-btn-primary:hover {
+    background-color: #2563eb;
+}
+.mewshtari-btn-danger {
+    background-color: #ef4444;
+    color: #ffffff;
+}
+.mewshtari-btn-danger:hover {
+    background-color: #dc2626;
+}
+.mewshtari-btn-secondary {
+    background-color: #f1f5f9;
+    color: #475569;
+    border: 1px solid #e2e8f0;
+}
+.mewshtari-btn-secondary:hover {
+    background-color: #e2e8f0;
+}
+.mewshtari-move-btn {
+    font-size: 14px;
+    padding: 0 10px;
+}
+.mewshtari-delete-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(4px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    border-radius: 12px;
+    z-index: 10;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease-in-out;
+    box-sizing: border-box;
+}
+.mewshtari-delete-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+.mewshtari-delete-overlay-text {
+    font-weight: 600;
+    color: #1e293b;
+    font-size: 15px;
+}
+.mewshtari-delete-overlay-buttons {
+    display: flex;
+    gap: 12px;
+}
+@keyframes mewshtari-pulse {
+    0% { transform: scale(0.9); opacity: 0.6; }
+    50% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(0.9); opacity: 0.6; }
+}
+.mewshtari-status-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+.mewshtari-status-dot.saving {
+    background-color: #3b82f6;
+    animation: mewshtari-pulse 1.2s infinite ease-in-out;
+}
+.mewshtari-status-dot.success {
+    background-color: #10b981;
+}
+.mewshtari-status-dot.error {
+    background-color: #ef4444;
+}
