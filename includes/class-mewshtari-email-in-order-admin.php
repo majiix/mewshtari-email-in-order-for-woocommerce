@@ -17,6 +17,19 @@ if ( ! class_exists( 'Mewshtari_Email_In_Order_Admin' ) ) {
             add_action( 'admin_init', [ $this, 'register_settings' ] );
             add_action( 'wp_ajax_mewshtari_save_settings', [ $this, 'ajax_save_settings' ] );
             add_action( 'admin_enqueue_scripts', [ $this, 'register_admin_assets' ] );
+            add_filter( 'plugin_action_links_' . plugin_basename( MEW_EMAIL_ORDER_PATH . 'mewshtari-email-in-order-for-woocommerce.php' ), [ $this, 'add_settings_link' ] );
+        }
+
+        /**
+         * Adds a settings link to the plugin action links on the plugins page.
+         *
+         * @param array $links Existing plugin action links.
+         * @return array Modified plugin action links.
+         */
+        public function add_settings_link( array $links ): array {
+            $settings_link = '<a href="' . esc_url( admin_url( 'admin.php?page=mewshtari-email-orders' ) ) . '">' . esc_html__( 'Settings', 'mewshtari-email-in-order-for-woocommerce' ) . '</a>';
+            array_unshift( $links, $settings_link );
+            return $links;
         }
 
         /**

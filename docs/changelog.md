@@ -223,3 +223,10 @@ Commit message: `refactor(core): unify placeholder logic, clean up and add safet
 2. Implemented `load_plugin_textdomain()` call on the `init` action hook in the main plugin bootstrap file to ensure WordPress loads translations from the `languages/` subdirectory.
 
 Commit message: `fix(i18n): make plugin localization-ready by declaring Domain Path and loading textdomain`
+
+## Step 22: Readme Enhancement and Plugin Settings Action Link
+1. Prepend settings link filter `plugin_action_links_{plugin}` inside `class-mewshtari-email-in-order-admin.php` constructor.
+2. Created `add_settings_link()` callback method to prepend a "Settings" link pointing to the WooCommerce Email in Orders configuration page.
+3. Expanded `readme.txt` with rich formatting, detailing all updated features, dynamic placeholders syntax, FAQ, and modular changelog entries to adhere to WordPress.org standards.
+
+Commit message: `feat(core): enhance readme.txt and add Settings action link to plugins page`
