@@ -148,6 +148,7 @@ if ( ! class_exists( 'Mewshtari_Email_In_Order' ) ) {
 
             $text = str_replace( '[product_title]', esc_html( $first_title ), $text );
             $text = str_replace( '[products_title]', $products_title, $text );
+            $text = str_replace( '[product_link]', esc_url( $first_link ), $text );
             $text = str_replace( '[product_title_with_link]', $product_title_with_link, $text );
             $text = str_replace( '[products_title_with_links]', $products_title_with_links, $text );
             $text = str_replace( '[order_date]', esc_html( $order_date ), $text );

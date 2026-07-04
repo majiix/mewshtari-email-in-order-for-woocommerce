@@ -38,6 +38,7 @@ Mewshtari Email in Order for WooCommerce allows store owners to define custom HT
 You can copy placeholder tags from the sticky guide in settings or from the copy badges inside the order metabox. Available placeholders:
 * `[name fallback="Valued Customer"]` - Customer's full billing name. Supports custom fallback value.
 * `[product_title]` - Title of the first physical/non-virtual item found in the order.
+* `[product_link]` - URL link to the first item found in the order.
 * `[products_title]` - Titles of all items found in the order (comma-separated for subjects, bulleted list for HTML).
 * `[product_title_with_link]` - Title of the first item wrapped in an HTML link to the product permalink.
 * `[products_title_with_links]` - Titles of all items in the order, wrapped in HTML links.

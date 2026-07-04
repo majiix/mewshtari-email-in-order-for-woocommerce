@@ -235,3 +235,17 @@ Commit message: `feat(core): enhance readme.txt and add Settings action link to 
 1. Refactored `.mewshtari-field-group input` css selectors in `assets/css/admin-settings.css` to target text inputs specifically with `input[type="text"]`. This prevents default Quicktags HTML buttons (`input[type="button"]`) from being styled to 100% width and 42px height, resolving the vertical stacking bug in editor code view mode.
 
 Commit message: `fix(settings): restrict field group input css selector to text inputs`
+
+## Step 23: Restore [product_link] Placeholder
+1. Added `[product_link]` placeholder replacement in `includes/class-mewshtari-email-in-order.php` mapping to the first product's raw URL.
+2. Localized `'product_link'` field within `get_order_placeholder_data()` in `includes/class-mewshtari-email-in-order-metabox.php` to pass it to the frontend script.
+3. Updated `populateTemplate()` in `assets/js/order-metabox.js` to dynamically substitute `[product_link]` in template previews and subjects.
+4. Added the placeholder to the settings page sidebar list guide in `includes/class-mewshtari-email-in-order-admin.php`.
+5. Updated the available placeholders list inside `readme.txt`.
+
+Commit message: `feat(placeholders): restore raw [product_link] placeholder support`
+
+## Fix 15: Move Order Metabox to Bottom (Last Position)
+1. Changed `add_meta_box()` registration priority parameter from `'high'` to `'low'` in `includes/class-mewshtari-email-in-order-metabox.php` to render the "Mewshtari Email in Order" metabox at the bottom (last position) of the WooCommerce order edit page.
+
+Commit message: `fix(metabox): render metabox at the bottom by reducing priority to low`

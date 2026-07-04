@@ -205,6 +205,10 @@ if ( ! class_exists( 'Mewshtari_Email_In_Order_Admin' ) ) {
                                         <div><?php esc_html_e( 'Title of the first item found in the order.', 'mewshtari-email-in-order-for-woocommerce' ); ?></div>
                                     </li>
                                     <li>
+                                        <strong>[product_link]</strong>
+                                        <div><?php esc_html_e( 'URL link to the first item found in the order.', 'mewshtari-email-in-order-for-woocommerce' ); ?></div>
+                                    </li>
+                                    <li>
                                         <strong>[products_title]</strong>
                                         <div><?php esc_html_e( 'Title of all items found in the order in list order.', 'mewshtari-email-in-order-for-woocommerce' ); ?></div>
                                     </li>

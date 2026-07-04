@@ -74,6 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let html = template.html || '';
         html = replaceNamePlaceholder(html, mewshtariMetaboxData.orderData.name);
         html = html.replace(/\[product_title\]/g, mewshtariMetaboxData.orderData.product_title);
+        html = html.replace(/\[product_link\]/g, mewshtariMetaboxData.orderData.product_link);
         html = html.replace(/\[products_title\]/g, mewshtariMetaboxData.orderData.products_title_html);
         html = html.replace(/\[product_title_with_link\]/g, mewshtariMetaboxData.orderData.product_title_with_link_html);
         html = html.replace(/\[products_title_with_links\]/g, mewshtariMetaboxData.orderData.products_title_with_links_html);
@@ -84,6 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let subject = template.subject || 'Confirmation';
         subject = replaceNamePlaceholder(subject, mewshtariMetaboxData.orderData.name);
         subject = subject.replace(/\[product_title\]/g, mewshtariMetaboxData.orderData.product_title);
+        subject = subject.replace(/\[product_link\]/g, mewshtariMetaboxData.orderData.product_link);
         subject = subject.replace(/\[products_title\]/g, mewshtariMetaboxData.orderData.products_title);
         subject = subject.replace(/\[product_title_with_link\]/g, mewshtariMetaboxData.orderData.product_title_with_link);
         subject = subject.replace(/\[products_title_with_links\]/g, mewshtariMetaboxData.orderData.products_title_with_links);

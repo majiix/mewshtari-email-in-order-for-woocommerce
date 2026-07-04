@@ -68,7 +68,7 @@ if ( ! class_exists( 'Mewshtari_Email_In_Order_Metabox' ) ) {
                     [ $this, 'render_meta_box' ],
                     $screen,
                     'normal',
-                    'high'
+                    'low'
                 );
             }
         }
@@ -143,6 +143,7 @@ if ( ! class_exists( 'Mewshtari_Email_In_Order_Metabox' ) ) {
             return [
                 'name'                           => esc_attr( $raw_data['billing_name'] ),
                 'product_title'                  => esc_attr( $raw_data['first_title'] ),
+                'product_link'                   => esc_url( $raw_data['first_link'] ),
                 'products_title'                 => esc_attr( $products_title_csv ),
                 'products_title_html'            => $products_title_list,
                 'product_title_with_link'        => esc_attr( $first_title_with_link_plain ),
