@@ -230,3 +230,8 @@ Commit message: `fix(i18n): make plugin localization-ready by declaring Domain P
 3. Expanded `readme.txt` with rich formatting, detailing all updated features, dynamic placeholders syntax, FAQ, and modular changelog entries to adhere to WordPress.org standards.
 
 Commit message: `feat(core): enhance readme.txt and add Settings action link to plugins page`
+
+## Fix 14: Restrict Field Group Input Styling Selector
+1. Refactored `.mewshtari-field-group input` css selectors in `assets/css/admin-settings.css` to target text inputs specifically with `input[type="text"]`. This prevents default Quicktags HTML buttons (`input[type="button"]`) from being styled to 100% width and 42px height, resolving the vertical stacking bug in editor code view mode.
+
+Commit message: `fix(settings): restrict field group input css selector to text inputs`

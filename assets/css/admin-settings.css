@@ -126,7 +126,7 @@
     color: #475569;
     font-size: 13px;
 }
-.mewshtari-field-group input,
+.mewshtari-field-group input[type="text"],
 .mewshtari-field-group select {
     padding: 10px 12px !important;
     border: 1px solid #cbd5e1 !important;
@@ -152,7 +152,7 @@
     box-sizing: border-box !important;
     line-height: 1.5 !important;
 }
-.mewshtari-field-group input:focus,
+.mewshtari-field-group input[type="text"]:focus,
 .mewshtari-field-group select:focus,
 .mewshtari-field-group textarea:focus {
     border-color: #3b82f6 !important;

@@ -15,7 +15,6 @@
   - [class-mewshtari-email-in-order-injector.php](file:///e:/wps/dorsanet/app/public/wp-content/plugins/mewshtari-email-in-order-for-woocommerce/includes/class-mewshtari-email-in-order-injector.php): Handles injection of content into transactional emails.
 - Data storage:
   - Global settings are stored in `mewshtari_email_templates` option as a serialized array of templates.
-  - Per-order custom email contents are saved in order metadata (`_mewshtari_email_subject`, `_mewshtari_email_body`).
 
 ## Verification Commands
 - PHP Syntax Linting:
