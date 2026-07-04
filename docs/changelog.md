@@ -142,4 +142,84 @@ Commit message: `refactor(assets): move inline CSS and JS to external enqueued a
 3. Automatically set the dropdown select element value to `'0'` and triggered the population routine on page load if templates are defined.
 4. Hooked into TinyMCE's `AddEditor` and `init` event loops to guarantee that delayed visual editor initializations load the default template's compiled HTML content correctly.
 
-Commit message: `feat(metabox): pre-select and load first template on page load`
+## Fix 4: Align Admin Settings Fields Sizes
+1. Updated input and select element selectors under `.mewshtari-field-group` inside `assets/css/admin-settings.css` to use `!important` declarations to override WordPress/WooCommerce core styling overrides.
+2. Added an explicit `height: 42px !important;` and `line-height: 1.5 !important;` for input and select fields to ensure uniform heights across all browsers.
+
+Commit message: `fix(settings): align fields sizes in admin panel`
+
+## Fix 5: Remove Tag Badges from Order Metabox
+1. Removed tag badges and toast notification HTML containers from the order edit screen metabox layout in `mewshtari-email-in-order-for-woocommerce.php`.
+2. Removed click-to-copy event listeners and the `showToast` helper function from `assets/js/order-metabox.js`.
+3. Cleared the associated CSS rules for the badges container, badge styles, and toast notifications from `assets/css/order-metabox.css`.
+
+Commit message: `fix(metabox): remove tag badges and toast from order page`
+
+## Fix 6: Dynamic Order Status Change Notice in Metabox
+1. Added WooCommerce order statuses mapping (`wc_get_order_statuses()`) and a localized notice prefix to the `mewshtariMetaboxData` script localization payload in `mewshtari-email-in-order-for-woocommerce.php`.
+2. Created a placeholder `<div id="mewshtari-mb-status-notice">` element inside the order metabox HTML container.
+3. Updated `populateTemplate()` inside `assets/js/order-metabox.js` to look up the selected template's mapped status name dynamically and render the "After sending email the status of this order will be changed to [Order Status Mapping]" message inside the notice element.
+4. Styled `.mewshtari-mb-status-notice` inside `assets/css/order-metabox.css` to match the premium, soft-blue alert aesthetic.
+
+Commit message: `fix(metabox): display dynamic order status change notice`
+
+## Fix 7: Asset Cache Busting
+1. Replaced static version strings with dynamic `filemtime` values inside `register_admin_assets()` to force the browser to invalidate old caches and load new styles and scripts instantly upon any updates.
+
+Commit message: `fix(assets): apply dynamic filemtime cache busting`
+
+## Fix 8: Hide Metabox Conditionally & Default Selection
+1. Modified `register_meta_boxes()` in `mewshtari-email-in-order-for-woocommerce.php` to abort registration if no templates are configured, preventing the metabox from rendering on the WooCommerce order edit page when empty.
+2. Removed the placeholder "-- Choose a template --" select option from the email templates selector so that the first template is always selected and loaded by default.
+
+Commit message: `fix(metabox): register conditionally and remove select placeholder`
+
+## Fix 9: Dynamic Name Fallback Attribute Placeholder
+1. Removed all hardcoded 'Donor' name fallbacks across PHP codebase.
+2. Updated settings panel placeholder guides to document new syntax: `[name fallback="Valued Customer"]`.
+3. Implemented regex-based placeholder replacement callback `preg_replace_callback()` in PHP (`output_injected_content()`) to support custom `fallback` parameters dynamically, falling back to 'Customer' if not specified.
+4. Created JS helper function `replaceNamePlaceholder()` in `assets/js/order-metabox.js` to process and substitute fallback attributes dynamically inside the settings panel templates list.
+
+Commit message: `feat(placeholders): add custom name fallback attribute support`
+
+## Fix 10: Add products_title Placeholder
+1. Documented the new `[products_title]` placeholder in the settings panel sidebar.
+2. Compiled order item names list dynamically formatted as a comma-separated string (for subjects and plain-text output) and an HTML unordered list (for visual editor and HTML emails) inside PHP's `get_order_placeholder_data()`.
+3. Extended `output_injected_content()` in PHP to replace `[products_title]` with the corresponding format depending on the target message type (HTML list or CSV string).
+4. Updated `populateTemplate()` in JS to replace `[products_title]` with the HTML bulleted list version inside the editor body and the plain-text comma-separated version in the email subject.
+
+Commit message: `feat(placeholders): add [products_title] placeholder`
+
+## Fix 11: Add Link-Integrated Product Placeholders & Remove product_link
+1. Removed `[product_link]` placeholder from settings guides, PHP data structures, backend email injections, and frontend JavaScript.
+2. Added `[product_title_with_link]` placeholder representing the first order product title wrapped in an HTML link `<a href="...">...</a>` (falling back to plain name + link in parentheses for subjects/plain text).
+3. Added `[products_title_with_links]` placeholder representing all order product titles wrapped in HTML links inside a bulleted list (falling back to CSV name + links in parentheses for subjects/plain text).
+4. Ensured that manual email dispatches always send formatted HTML emails (`Content-Type: text/html`) with link tags fully active.
+
+Commit message: `feat(placeholders): add link-integrated product placeholders`
+
+## Fix 12: Split Controller into Modular Component Files
+1. Rewrote main file `mewshtari-email-in-order-for-woocommerce.php` to define plugin constants (`MEW_EMAIL_ORDER_VERSION`, `MEW_EMAIL_ORDER_PATH`, `MEW_EMAIL_ORDER_URL`) and bootstrap component classes.
+2. Created `includes/class-mewshtari-email-in-order.php` as the main orchestrator initialization controller.
+3. Created `includes/class-mewshtari-email-in-order-admin.php` containing the admin settings panel, assets loader, repeater HTML layout, and template validation/sanitization.
+4. Created `includes/class-mewshtari-email-in-order-metabox.php` containing the WooCommerce order metabox, placeholder compilation, and AJAX mail transmission handler.
+5. Created `includes/class-mewshtari-email-in-order-injector.php` containing the action hooks and replacement methods for WooCommerce transactional emails.
+
+Commit message: `refactor(core): split large controller class into component classes`
+
+## Step 21: Codebase Optimization, Cleanup, and Safety Checks
+1. Unified the placeholder parsing and order item data resolution logic by introducing helper methods `get_order_placeholder_data()` and `replace_placeholders()` in the primary class `Mewshtari_Email_In_Order`.
+2. Refactored the core hook injector class `Mewshtari_Email_In_Order_Injector` to delegate placeholder resolution, removing over 100 lines of redundant duplicate code.
+3. Simplified order ID lookup in the WooCommerce metabox class `Mewshtari_Email_In_Order_Metabox` by typechecking `$post_or_order` directly and delegated placeholder values to the unified helper.
+4. Optimized admin Settings API sanitization `sanitize_templates()` by calling `wp_unslash()` recursively on the entire input array once, instead of doing it on individual keys inside the loop.
+5. Added client-side safety checks in `assets/js/admin-settings.js` to verify `wp.editor` is defined before calling editor initialization and destruction methods.
+6. Added a WooCommerce mailer check in `dispatch_email()` to prevent potential server-side fatal errors if WooCommerce mailer initializes as null.
+7. Updated `docs/overview.md` to reflect the correct modular class split structure of the plugin.
+
+Commit message: `refactor(core): unify placeholder logic, clean up and add safety checks`
+
+## Fix 13: Localization-Ready Configuration
+1. Added `Domain Path: /languages` metadata header to the main plugin bootstrap file.
+2. Implemented `load_plugin_textdomain()` call on the `init` action hook in the main plugin bootstrap file to ensure WordPress loads translations from the `languages/` subdirectory.
+
+Commit message: `fix(i18n): make plugin localization-ready by declaring Domain Path and loading textdomain`

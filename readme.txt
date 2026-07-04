@@ -1,5 +1,5 @@
 === Mewshtari Email in Order for WooCommerce ===
-Contributors: antigravity
+Contributors: micromax2
 Tags: woocommerce, email, status, dynamic, automation
 Requires at least: 6.0
 Tested up to: 7.0

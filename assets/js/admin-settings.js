@@ -98,24 +98,27 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function reinitEditor(id, content) {
-        wp.editor.initialize(id, {
-            tinymce: {
-                wpautop: true,
-                plugins: 'charmap,colorpicker,hr,lists,media,paste,tabfocus,textcolor,fullscreen,wordpress,wpautoresize,wpeditimage,wplink,wpdialogs',
-                toolbar1: 'formatselect,bold,italic,bullist,numlist,blockquote,alignleft,aligncenter,alignright,link,wp_more,fullscreen,wp_adv',
-                toolbar2: 'strikethrough,hr,forecolor,pastetext,removeformat,charmap,outdent,indent,undo,redo,wp_help',
-                setup: function(ed) {
-                    ed.on('change', function() {
-                        tinymce.triggerSave();
-                    });
-                }
-            },
-            quicktags: true,
-            mediaButtons: false
-        });
-        const editor = tinymce.get(id);
-        if (editor) {
-            editor.setContent(content);
+        if (typeof wp !== 'undefined' && wp.editor) {
+            wp.editor.initialize(id, {
+                tinymce: {
+                    wpautop: true,
+                    plugins: 'charmap,colorpicker,hr,lists,media,paste,tabfocus,textcolor,fullscreen,wordpress,wpautoresize,wpeditimage,wplink,wpdialogs',
+                    toolbar1: 'formatselect,bold,italic,bullist,numlist,blockquote,alignleft,aligncenter,alignright,link,wp_more,fullscreen,wp_adv',
+                    toolbar2: 'strikethrough,hr,forecolor,pastetext,removeformat,charmap,outdent,indent,undo,redo,wp_help',
+                    setup: function(ed) {
+                        ed.on('change', function() {
+                            if (typeof tinymce !== 'undefined') {
+                                tinymce.triggerSave();
+                            }
+                        });
+                    }
+                },
+                quicktags: true,
+                mediaButtons: false
+            });
+        }
+        if (typeof tinymce !== 'undefined' && tinymce.get(id)) {
+            tinymce.get(id).setContent(content);
         } else {
             const el = document.getElementById(id);
             if (el) el.value = content;

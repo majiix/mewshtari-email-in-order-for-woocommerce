@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const statusCard = document.getElementById('mewshtari-status-card');
     const statusIcon = document.getElementById('mewshtari-status-icon');
     const statusText = document.getElementById('mewshtari-status-text');
-    const toast = document.getElementById('mewshtari-toast');
 
     let countdownTimer = null;
     let secondsLeft = 10;
@@ -15,34 +14,6 @@ document.addEventListener('DOMContentLoaded', function() {
     if (typeof mewshtariMetaboxData === 'undefined') return;
 
     if (!selector) return;
-
-    // Handle badge clicks (Click to copy)
-    document.querySelectorAll('.mewshtari-mb-badge').forEach(badge => {
-        badge.addEventListener('click', function() {
-            const tag = this.getAttribute('data-tag');
-            navigator.clipboard.writeText(tag).then(() => {
-                showToast(mewshtariMetaboxData.i18n.copied + tag);
-            }).catch(() => {
-                // Fallback
-                const el = document.createElement('textarea');
-                el.value = tag;
-                document.body.appendChild(el);
-                el.select();
-                document.execCommand('copy');
-                document.body.removeChild(el);
-                showToast(mewshtariMetaboxData.i18n.copied + tag);
-            });
-        });
-    });
-
-    function showToast(message) {
-        if (!toast) return;
-        toast.textContent = message;
-        toast.classList.add('show');
-        setTimeout(() => {
-            toast.classList.remove('show');
-        }, 2000);
-    }
 
     function updateStatus(type, message) {
         if (!statusCard) return;
@@ -72,12 +43,26 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    function replaceNamePlaceholder(text, realName) {
+        return text.replace(/\[name(?: fallback=["'](.*?)["'])?\]/g, function(match, fallback) {
+            if (realName && realName.trim() !== '') {
+                return realName;
+            }
+            return (fallback !== undefined) ? fallback : 'Customer';
+        });
+    }
+
     function populateTemplate() {
         const index = selector.value;
+        const noticeElement = document.getElementById('mewshtari-mb-status-notice');
         if (index === '') {
             setEditorContent('');
             if (subjectInput) {
                 subjectInput.value = 'Confirmation';
+            }
+            if (noticeElement) {
+                noticeElement.style.display = 'none';
+                noticeElement.innerHTML = '';
             }
             hideStatus();
             return;
@@ -87,22 +72,39 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!template) return;
 
         let html = template.html || '';
-        html = html.replace(/\[name\]/g, mewshtariMetaboxData.orderData.name);
+        html = replaceNamePlaceholder(html, mewshtariMetaboxData.orderData.name);
         html = html.replace(/\[product_title\]/g, mewshtariMetaboxData.orderData.product_title);
-        html = html.replace(/\[product_link\]/g, mewshtariMetaboxData.orderData.product_link);
+        html = html.replace(/\[products_title\]/g, mewshtariMetaboxData.orderData.products_title_html);
+        html = html.replace(/\[product_title_with_link\]/g, mewshtariMetaboxData.orderData.product_title_with_link_html);
+        html = html.replace(/\[products_title_with_links\]/g, mewshtariMetaboxData.orderData.products_title_with_links_html);
         html = html.replace(/\[order_date\]/g, mewshtariMetaboxData.orderData.order_date);
 
         setEditorContent(html);
 
         let subject = template.subject || 'Confirmation';
-        subject = subject.replace(/\[name\]/g, mewshtariMetaboxData.orderData.name);
+        subject = replaceNamePlaceholder(subject, mewshtariMetaboxData.orderData.name);
         subject = subject.replace(/\[product_title\]/g, mewshtariMetaboxData.orderData.product_title);
-        subject = subject.replace(/\[product_link\]/g, mewshtariMetaboxData.orderData.product_link);
+        subject = subject.replace(/\[products_title\]/g, mewshtariMetaboxData.orderData.products_title);
+        subject = subject.replace(/\[product_title_with_link\]/g, mewshtariMetaboxData.orderData.product_title_with_link);
+        subject = subject.replace(/\[products_title_with_links\]/g, mewshtariMetaboxData.orderData.products_title_with_links);
         subject = subject.replace(/\[order_date\]/g, mewshtariMetaboxData.orderData.order_date);
 
         if (subjectInput) {
             subjectInput.value = subject;
         }
+
+        if (noticeElement) {
+            if (template.status) {
+                const statusLabel = (mewshtariMetaboxData.statuses && mewshtariMetaboxData.statuses[template.status]) || template.status;
+                const statusPrefix = mewshtariMetaboxData.i18n.statusNoticePrefix || 'After sending email the status of this order will be changed to ';
+                noticeElement.innerHTML = statusPrefix + `<strong>${statusLabel}</strong>`;
+                noticeElement.style.display = 'block';
+            } else {
+                noticeElement.style.display = 'none';
+                noticeElement.innerHTML = '';
+            }
+        }
+
         hideStatus();
     }
 

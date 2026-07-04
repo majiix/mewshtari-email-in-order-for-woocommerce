@@ -127,24 +127,38 @@
     font-size: 13px;
 }
 .mewshtari-field-group input,
-.mewshtari-field-group select,
+.mewshtari-field-group select {
+    padding: 10px 12px !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 6px !important;
+    font-size: 14px !important;
+    background-color: #f8fafc !important;
+    color: #1e293b !important;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    height: 42px !important;
+    line-height: 1.5 !important;
+}
 .mewshtari-field-group textarea {
-    padding: 10px 12px;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    font-size: 14px;
-    background-color: #f8fafc;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-    width: 100%;
-    box-sizing: border-box;
+    padding: 10px 12px !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 6px !important;
+    font-size: 14px !important;
+    background-color: #f8fafc !important;
+    color: #1e293b !important;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    line-height: 1.5 !important;
 }
 .mewshtari-field-group input:focus,
 .mewshtari-field-group select:focus,
 .mewshtari-field-group textarea:focus {
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
-    background-color: #ffffff;
-    outline: none;
+    border-color: #3b82f6 !important;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15) !important;
+    background-color: #ffffff !important;
+    outline: none !important;
 }
 .mewshtari-card-actions {
     display: flex;
