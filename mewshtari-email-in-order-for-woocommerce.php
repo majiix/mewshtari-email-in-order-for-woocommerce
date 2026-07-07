@@ -3,7 +3,7 @@
  * Plugin Name: Mewshtari Email in Order for WooCommerce
  * Plugin URI: https://wordpress.org/plugins/mewshtari-email-in-order-for-woocommerce
  * Description: Dynamically sends custom status-mapped HTML emails to customers from WooCommerce orders.
- * Version: 1.1.0
+ * Version: 1.2.0
  * Author: micromax
  * Text Domain: mewshtari-email-in-order-for-woocommerce
  * Domain Path: /languages
@@ -18,7 +18,7 @@
 defined( 'ABSPATH' ) || exit;
 
 // Define Plugin Constants.
-define( 'MEW_EMAIL_ORDER_VERSION', '1.1.0' );
+define( 'MEW_EMAIL_ORDER_VERSION', '1.2.0' );
 define( 'MEW_EMAIL_ORDER_PATH', plugin_dir_path( __FILE__ ) );
 define( 'MEW_EMAIL_ORDER_URL', plugin_dir_url( __FILE__ ) );
 
