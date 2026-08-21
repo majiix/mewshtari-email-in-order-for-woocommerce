@@ -249,3 +249,13 @@ Commit message: `feat(placeholders): restore raw [product_link] placeholder supp
 1. Changed `add_meta_box()` registration priority parameter from `'high'` to `'low'` in `includes/class-mewshtari-email-in-order-metabox.php` to render the "Mewshtari Email in Order" metabox at the bottom (last position) of the WooCommerce order edit page.
 
 Commit message: `fix(metabox): render metabox at the bottom by reducing priority to low`
+
+## Step 24: Version 1.3.0 Release - WordPress 7.1 & WooCommerce 11.0.0 Compatibility
+1. Audited plugin against WordPress 7.1 Field Guide and WooCommerce 11.0.0 changes.
+2. Declared explicit High-Performance Order Storage (`custom_order_tables`) compatibility via `\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility()` hooked to `before_woocommerce_init`.
+3. Added `WC tested up to: 11.0.0` and bumped `Tested up to: 7.1` in headers.
+4. Dynamically resolved HPOS screen ID in `register_metabox_assets()`.
+5. Created `docs/project.md` and bumped release version to `1.3.0`.
+
+Commit message: `chore(release): bump version to 1.3.0 with WP 7.1 and WC 11.0 compatibility`
+

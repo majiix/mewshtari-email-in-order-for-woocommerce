@@ -2,9 +2,11 @@
 Contributors: micromax2
 Tags: woocommerce, email, status, crm, order
 Requires at least: 6.0
-Tested up to: 7.0
+Tested up to: 7.1
 Requires PHP: 8.0
-Stable tag: 1.2.0
+WC requires at least: 8.0
+WC tested up to: 11.0.0
+Stable tag: 1.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -69,6 +71,11 @@ Yes, the plugin is fully compatible with both the traditional WordPress post-bas
 When you click "Send to customer now" in the metabox, a 10-second countdown begins. The button turns red and provides a cancellation prompt. You can click this to abort the send action at any time before the timer expires.
 
 == Changelog ==
+
+= 1.3.0 =
+* Verified and updated compatibility for WordPress 7.1.0 and WooCommerce 11.0.0.
+* Declared explicit WooCommerce HPOS (High-Performance Order Storage) compatibility via FeaturesUtil.
+* Enhanced metabox asset hook evaluation to dynamically include custom order screen IDs.
 
 = 1.2.0 =
 * Updated documentation to explain differences from default WooCommerce email features and benefits.

@@ -24,7 +24,15 @@ if ( ! class_exists( 'Mewshtari_Email_In_Order_Metabox' ) ) {
          * @param string $hook Current admin page suffix.
          */
         public function register_metabox_assets( string $hook ): void {
-            if ( 'post.php' !== $hook && 'post-new.php' !== $hook && 'woocommerce_page_wc-orders' !== $hook ) {
+            $valid_hooks = [ 'post.php', 'post-new.php', 'woocommerce_page_wc-orders' ];
+            if ( class_exists( 'Automattic\WooCommerce\Utilities\OrderUtil' ) ) {
+                $hpos_screen = wc_get_page_screen_id( 'shop_order' );
+                if ( $hpos_screen && ! in_array( $hpos_screen, $valid_hooks, true ) ) {
+                    $valid_hooks[] = $hpos_screen;
+                }
+            }
+
+            if ( ! in_array( $hook, $valid_hooks, true ) ) {
                 return;
             }
 
