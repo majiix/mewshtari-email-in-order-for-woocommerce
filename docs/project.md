@@ -5,7 +5,7 @@
 
 ## Tech Stack & Compatibility
 - **WordPress**: Requires at least 6.0 | Tested up to 7.1.0
-- **WooCommerce**: Requires at least 8.0 | Tested up to 11.0.0
+- **WooCommerce**: Requires at least 8.0 | Tested up to 11.1.0
 - **PHP**: 8.0+ (supports PHP 8.1, 8.2, 8.3, 8.4)
 - **High-Performance Order Storage (HPOS)**: Fully supported (`custom_order_tables` declared compatibility)
 - **Frontend**: Vanilla JavaScript (ES6+), scoped modern CSS, TinyMCE / Quicktags API integration

@@ -259,3 +259,13 @@ Commit message: `fix(metabox): render metabox at the bottom by reducing priority
 
 Commit message: `chore(release): bump version to 1.3.0 with WP 7.1 and WC 11.0 compatibility`
 
+## Step 25: Version 1.3.1 Release - WooCommerce 11.1.0 Compatibility
+1. Conducted compatibility audit against WooCommerce 11.1.0 codebase and changelog.
+2. Verified HPOS custom order tables compatibility, `FeaturesUtil::declare_compatibility()`, and screen ID resolution.
+3. Verified `WC_Order` data methods, order edit screen metabox registration, and `WC()->mailer()` dispatch handling.
+4. Verified `woocommerce_email_before_order_table` transactional email injection hooks and arguments.
+5. Bumped plugin version to `1.3.1` and updated `WC tested up to: 11.1.0` in headers, `readme.txt`, and project documentation.
+
+Commit message: `chore(release): bump version to 1.3.1 with WooCommerce 11.1.0 compatibility`
+
+
