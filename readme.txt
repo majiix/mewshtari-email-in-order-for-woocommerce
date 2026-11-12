@@ -5,8 +5,8 @@ Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 8.0
 WC requires at least: 8.0
-WC tested up to: 11.1.0
-Stable tag: 1.3.1
+WC tested up to: 11.3.0
+Stable tag: 1.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -71,6 +71,9 @@ Yes, the plugin is fully compatible with both the traditional WordPress post-bas
 When you click "Send to customer now" in the metabox, a 10-second countdown begins. The button turns red and provides a cancellation prompt. You can click this to abort the send action at any time before the timer expires.
 
 == Changelog ==
+
+= 1.3.2 =
+* Verified and updated compatibility for WooCommerce 11.3.0.
 
 = 1.3.1 =
 * Verified and updated compatibility for WooCommerce 11.1.0.

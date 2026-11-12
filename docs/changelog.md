@@ -268,4 +268,8 @@ Commit message: `chore(release): bump version to 1.3.0 with WP 7.1 and WC 11.0 c
 
 Commit message: `chore(release): bump version to 1.3.1 with WooCommerce 11.1.0 compatibility`
 
+## Step 26: Version 1.3.2 Release - WooCommerce 11.3.0 Compatibility
+1. Conducted read-only compatibility audit against WooCommerce 11.1.1 through 11.3.0 changelogs and release notes; found zero breaking or deprecated API overlaps.
+2. Bumped plugin version to `1.3.2` and updated `WC tested up to: 11.3.0` in `mewshtari-email-in-order-for-woocommerce.php`, `readme.txt`, and `docs/project.md`.
+
 
